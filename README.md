@@ -4,6 +4,8 @@ An investment calculator built with React and Vite. Enter a starting amount, how
 
 I built it as the React checkpoint project for the IT Online Learning React Essentials course (Module 7). The rest of my coursework is in [itonlinelearning-coursework](https://github.com/crouswebco-max/itonlinelearning-coursework).
 
+**Live demo:** https://crouswebco-max.github.io/react-money-builder/
+
 ![Comparing two scenarios in Money Builder](screenshots/money-builder-compare.png)
 
 ## Features
@@ -25,7 +27,7 @@ npm install
 npm run dev
 ```
 
-Then open the address Vite prints (usually `http://localhost:5173`). `npm run build` makes a production build in `dist/`.
+Then open the address Vite prints (usually `http://localhost:5173`). `npm run build` makes a production build in `dist/`, and `npm run deploy` builds it and publishes it to GitHub Pages (with the `gh-pages` package, which pushes `dist/` to the `gh-pages` branch).
 
 ## How it's built
 
