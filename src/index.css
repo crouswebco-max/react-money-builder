@@ -1,0 +1,405 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Roboto+Condensed:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Quicksand', sans-serif;
+  color: #e1eeeb;
+  background: linear-gradient(180deg, #0b2421 0%, #102e2a 100%);
+}
+
+/* Task 6: the header styles from the brief */
+#header {
+  text-align: center;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+#header img {
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+  background-color: transparent;
+}
+
+#header h1 {
+  font-size: 1.5rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #9ee6c5;
+  margin: 0.75rem 0 0.25rem;
+}
+
+#header p {
+  margin: 0;
+  color: #a7c4bd;
+}
+
+/* Bonus 3: bigger on wider screens */
+@media (min-width: 768px) {
+  #header {
+    margin: 4rem auto 3rem;
+  }
+
+  #header img {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  #header h1 {
+    font-size: 2.25rem;
+  }
+
+  #header p {
+    font-size: 1.1rem;
+  }
+}
+
+/* ============================================
+   Task 4: layout and styling
+   ============================================ */
+.app {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 1rem 4rem;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.compare-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.compare-toggle input {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: #5dd39e;
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: minmax(0, 30rem);
+  justify-content: center;
+  gap: 1rem;
+}
+
+.inputs--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.user-input {
+  padding: 1rem 1.25rem;
+  color: #1f2d2a;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+}
+
+.user-input h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  color: #1f6e57;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.input-group label {
+  padding-top: 0.5rem;
+  font-weight: bold;
+}
+
+.input-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.input-group input {
+  width: 9rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+
+.input-group input:hover {
+  border-color: #1f8a70;
+}
+
+.input-group input:focus {
+  outline: 2px solid #1f8a70;
+  outline-offset: 1px;
+}
+
+.input-group input[aria-invalid='true'] {
+  border-color: #c0392b;
+  background-color: #fdecea;
+}
+
+/* Task 4: error messages in red */
+.error-text {
+  max-width: 9rem;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: right;
+  color: #c0392b;
+}
+
+.error-banner {
+  max-width: 30rem;
+  margin: 1.5rem auto 0;
+  padding: 0.85rem 1rem;
+  text-align: center;
+  font-weight: 700;
+  color: #7f1d1d;
+  background-color: #fde8e8;
+  border-left: 5px solid #c0392b;
+  border-radius: 4px;
+}
+
+/* Task 5: the loading state */
+.results {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
+  font-weight: 700;
+  color: #9ee6c5;
+}
+
+.spinner {
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 3px solid rgba(158, 230, 197, 0.3);
+  border-top-color: #9ee6c5;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.results__content {
+  transition: opacity 0.2s;
+}
+
+.results__content--stale {
+  opacity: 0.45;
+}
+
+/* Comparison cards */
+.compare-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.compare-card {
+  padding: 1rem 1.25rem;
+  text-align: center;
+  background-color: rgba(93, 211, 158, 0.1);
+  border: 2px solid #5dd39e;
+  border-radius: 8px;
+}
+
+.compare-card--b {
+  background-color: rgba(124, 196, 255, 0.1);
+  border-color: #7cc4ff;
+}
+
+.compare-card h3,
+.compare-card p {
+  margin: 0;
+}
+
+.compare-card__value {
+  margin: 0.25rem 0 !important;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.compare-verdict {
+  grid-column: 1 / -1;
+  margin: 0;
+  text-align: center;
+  font-weight: 700;
+  color: #9ee6c5;
+}
+
+/* The chart */
+.chart {
+  margin: 0 0 1.5rem;
+  padding: 1rem 0.5rem 0.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+/* Task 3 and Task 4: the download button, with a hover effect */
+.download-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.download-button {
+  padding: 0.65rem 1.4rem;
+  font: inherit;
+  font-weight: 700;
+  color: #0b2421;
+  background-color: #5dd39e;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.download-button:hover {
+  background-color: #9ee6c5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(93, 211, 158, 0.3);
+}
+
+.download-button:active {
+  transform: translateY(0);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  max-height: 32rem;
+  overflow-y: auto;
+  border-radius: 6px;
+}
+
+/* In this wider layout the table fills the width, lining up with the chart */
+.table-scroll #result {
+  max-width: none;
+}
+
+#result caption {
+  padding: 0.6rem;
+  font-weight: 700;
+  text-align: left;
+  color: #9ee6c5;
+  background-color: #0b2421;
+}
+
+#result tbody tr:hover td {
+  background-color: #e3f5ec;
+}
+
+@media (max-width: 760px) {
+  .inputs--two,
+  .compare-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 30rem) {
+  .input-group {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .input-wrap,
+  .input-group input,
+  .error-text {
+    width: 100%;
+    max-width: none;
+    align-items: stretch;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2s;
+  }
+
+  .download-button,
+  .results__content {
+    transition: none;
+  }
+}
+
+/* Task 3: the table styles from the brief */
+#result {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  border-collapse: collapse;
+}
+
+.table-scroll #result {
+  margin: 0;
+  background-color: #ffffff;
+}
+
+#result thead {
+  background-color: #34495e;
+  color: white;
+}
+
+#result th,
+#result td {
+  padding: 0.5rem;
+  text-align: right;
+}
+
+#result tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#result td {
+  color: #1f2d2a;
+}
+
+#result th:first-child,
+#result td:first-child {
+  text-align: center;
+}
+
+#result thead th {
+  position: sticky;
+  top: 0;
+  background-color: #34495e;
+}
+
+/* Bonus 1: the summary row */
+#result tfoot th,
+#result tfoot td {
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #1f6e57;
+}
+
